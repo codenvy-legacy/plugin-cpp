@@ -1,0 +1,22 @@
+[
+    {
+        "displayName": "C++ Hello",
+        "category": "Samples - Hello World",
+        "description": "A simple C++ application.",
+        "source": {
+            "type": "git",
+            "location": "https://github.com/codenvy-templates/desktop-c-plus-plus-basic.git",
+            "parameters": {
+                "branch": "3.1.0",
+                "cleanVcs": "true"
+            }
+        },
+        "defaultRunnerEnvironment": "default",
+        "runnerEnvironmentConfigurations": {
+            "default": {
+                "recommendedMemorySize": 256
+            }
+        },
+        "runnerName": "cpp-standalone-default"
+    }
+]
