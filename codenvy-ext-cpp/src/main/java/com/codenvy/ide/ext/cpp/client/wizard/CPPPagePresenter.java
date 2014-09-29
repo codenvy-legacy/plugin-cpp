@@ -11,7 +11,6 @@
 package com.codenvy.ide.ext.cpp.client.wizard;
 
 import com.codenvy.api.project.gwt.client.ProjectServiceClient;
-import com.codenvy.api.project.shared.dto.GenerateDescriptor;
 import com.codenvy.api.project.shared.dto.ProjectDescriptor;
 import com.codenvy.ide.api.event.OpenProjectEvent;
 import com.codenvy.ide.api.projecttype.wizard.ProjectWizard;
@@ -106,6 +105,9 @@ public class CPPPagePresenter extends AbstractWizardPage implements CPPPageView.
 
         projectDescriptorToUpdate.setVisibility(getProjectVisibility());
         final String name = wizardContext.getData(ProjectWizard.PROJECT_NAME);
+        projectDescriptorToUpdate.setDescription(wizardContext.getData(ProjectWizard.PROJECT_DESCRIPTION));
+        projectDescriptorToUpdate.setRunner(ProjectAttributes.CPP_DEFAULT_RUNNER);
+        projectDescriptorToUpdate.setDefaultRunnerEnvironment(ProjectAttributes.CPP_DEFAULT_RUNNER_ENVID);
         final ProjectDescriptor project = wizardContext.getData(ProjectWizard.PROJECT);
         if (project != null) {
             if (project.getName().equals(name)) {
@@ -126,7 +128,7 @@ public class CPPPagePresenter extends AbstractWizardPage implements CPPPageView.
                 });
             }
         } else {
-            generateProject(name, getProjectVisibility(), callback);
+            createProject(callback, projectDescriptorToUpdate, name);
         }
     }
 
@@ -158,26 +160,24 @@ public class CPPPagePresenter extends AbstractWizardPage implements CPPPageView.
                 });
     }
 
-    private void generateProject(final String name, String visibility, final CommitCallback callback) {
-        GenerateDescriptor generateDescriptor = dtoFactory.createDto(GenerateDescriptor.class)
-                                                          .withGeneratorName(ProjectAttributes.CPP_DEFAULT_PROJECT_GENERATOR)
-                                                          .withProjectVisibility(visibility);
-        projectServiceClient.generateProject(name, generateDescriptor,
-                                             new AsyncRequestCallback<ProjectDescriptor>(
-                                                     dtoUnmarshallerFactory.newUnmarshaller(ProjectDescriptor.class)) {
-                                                 @Override
-                                                 protected void onSuccess(ProjectDescriptor result) {
-                                                     eventBus.fireEvent(new OpenProjectEvent(result.getName()));
-                                                     wizardContext.putData(ProjectWizard.PROJECT, result);
-                                                     callback.onSuccess();
-                                                 }
+    private void createProject(final CommitCallback callback, ProjectDescriptor projectDescriptor, final String name) {
+        projectServiceClient
+                .createProject(name, projectDescriptor,
+                               new AsyncRequestCallback<ProjectDescriptor>(
+                                       dtoUnmarshallerFactory.newUnmarshaller(ProjectDescriptor.class)) {
+                                   @Override
+                                   protected void onSuccess(ProjectDescriptor result) {
+                                       eventBus.fireEvent(new OpenProjectEvent(result.getName()));
+                                       wizardContext.putData(ProjectWizard.PROJECT, result);
+                                       callback.onSuccess();
+                                   }
 
-                                                 @Override
-                                                 protected void onFailure(Throwable exception) {
-                                                     callback.onFailure(exception);
-                                                 }
-                                             }
-                                            );
+                                   @Override
+                                   protected void onFailure(Throwable exception) {
+                                       callback.onFailure(exception);
+                                   }
+                               }
+                              );
     }
 
 }

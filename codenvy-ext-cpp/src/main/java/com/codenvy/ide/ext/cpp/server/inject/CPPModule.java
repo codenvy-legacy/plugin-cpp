@@ -10,13 +10,10 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.cpp.server.inject;
 
-import com.codenvy.api.project.server.ProjectGenerator;
-import com.codenvy.ide.ext.cpp.server.project.generator.SimpleProjectGenerator;
 import com.codenvy.ide.ext.cpp.server.project.type.CPPProjectTypeDescriptionExtension;
 import com.codenvy.ide.ext.cpp.server.project.type.CPPProjectTypeExtension;
 import com.codenvy.inject.DynaModule;
 import com.google.inject.AbstractModule;
-import com.google.inject.multibindings.Multibinder;
 
 @DynaModule
 public class CPPModule extends AbstractModule {
@@ -24,8 +21,5 @@ public class CPPModule extends AbstractModule {
     protected void configure() {
         bind(CPPProjectTypeExtension.class);
         bind(CPPProjectTypeDescriptionExtension.class);
-
-        Multibinder<ProjectGenerator> multiBinder = Multibinder.newSetBinder(binder(), ProjectGenerator.class);
-        multiBinder.addBinding().to(SimpleProjectGenerator.class);
     }
 }
