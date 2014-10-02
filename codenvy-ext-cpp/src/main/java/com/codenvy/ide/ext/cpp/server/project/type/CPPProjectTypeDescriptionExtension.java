@@ -35,8 +35,7 @@ public class CPPProjectTypeDescriptionExtension implements ProjectTypeDescriptio
     @Override
     public List<ProjectType> getProjectTypes() {
         final List<ProjectType> list = new ArrayList<>(1);
-        list.add(new ProjectType(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, ProjectAttributes.CPP_CATEGORY, null,
-                                 ProjectAttributes.CPP_DEFAULT_RUNNER));
+        list.add(new ProjectType(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, ProjectAttributes.CPP_CATEGORY));
         return list;
     }
 

@@ -40,8 +40,7 @@ public class CPPProjectTypeExtension implements ProjectTypeExtension {
     public CPPProjectTypeExtension(ProjectTypeDescriptionRegistry registry,
                                    ProjectTemplateDescriptionLoader projectTemplateDescriptionLoader) {
         this.projectTemplateDescriptionLoader = projectTemplateDescriptionLoader;
-        this.projectType = new ProjectType(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, ProjectAttributes.CPP_CATEGORY, null,
-                                           ProjectAttributes.CPP_DEFAULT_RUNNER);
+        this.projectType = new ProjectType(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, ProjectAttributes.CPP_CATEGORY);
         registry.registerProjectType(this);
     }
 

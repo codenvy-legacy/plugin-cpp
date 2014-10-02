@@ -15,7 +15,4 @@ public interface ProjectAttributes {
     String CPP_ID             = "cpp";
     String CPP_NAME           = "C++ Project";
     String CPP_CATEGORY       = "C++";
-
-    String CPP_DEFAULT_RUNNER = "cpp-standalone-default";
-    String CPP_DEFAULT_RUNNER_ENVID = "default";
 }
