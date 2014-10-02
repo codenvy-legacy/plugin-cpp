@@ -44,6 +44,6 @@ public class CPPExtension {
 
         projectTypeWizardRegistry.addWizard("cpp", wizard);
 
-        iconRegistry.registerIcon(new Icon("cpp.samples.category.icon", parserResource.cppCategoryIcon()));
+        iconRegistry.registerIcon(new Icon("c++.samples.category.icon", parserResource.cppCategoryIcon()));
     }
 }
