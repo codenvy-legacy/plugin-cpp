@@ -18,5 +18,26 @@
             }
         },
         "runnerName": "cpp-standalone-default"
-    }
+    },
+
+    {
+            "displayName": "Qt",
+            "category": "Samples - Hello World",
+            "description": "A simple file search Qt application which is part of Qt Starter Kit",
+            "source": {
+                "type": "git",
+                "location": "https://github.com/codenvy-templates/desktop-cpp-qt-simple.git",
+                "parameters": {
+                    "branch": "3.1.0",
+                    "cleanVcs": "true"
+                }
+            },
+            "defaultRunnerEnvironment": "qt4",
+            "runnerEnvironmentConfigurations": {
+                "default": {
+                    "recommendedMemorySize": 256
+                }
+            },
+            "runnerName": "cpp-standalone-default"
+        }
 ]
