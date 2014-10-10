@@ -11,6 +11,8 @@
 package com.codenvy.ide.ext.cpp.client;
 
 import com.codenvy.ide.api.extension.Extension;
+import com.codenvy.ide.api.filetypes.FileType;
+import com.codenvy.ide.api.filetypes.FileTypeRegistry;
 import com.codenvy.ide.api.icon.Icon;
 import com.codenvy.ide.api.icon.IconRegistry;
 import com.codenvy.ide.api.notification.NotificationManager;
@@ -23,6 +25,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
+import com.google.inject.name.Named;
 import org.vectomatic.dom.svg.ui.SVGResource;
 
 /** @author Vladyslav Zhukovskii */
@@ -30,20 +33,32 @@ import org.vectomatic.dom.svg.ui.SVGResource;
 @Extension(title = "C++", version = "3.0.0")
 public class CPPExtension {
     public interface ParserResource extends ClientBundle {
-        @Source("com/codenvy/ide/ext/cpp/client/image/cpp.svg")
+        @Source("com/codenvy/ide/ext/cpp/client/image/cpp-category.svg")
         SVGResource cppCategoryIcon();
+
+        @Source("com/codenvy/ide/ext/cpp/client/image/cpp.svg")
+        SVGResource cppFile();
+
+        @Source("com/codenvy/ide/ext/cpp/client/image/h.svg")
+        SVGResource hFile();
     }
 
     @Inject
     public CPPExtension(Provider<CPPPagePresenter> cppPagePresenterProvider, Provider<SelectRunnerPagePresenter> runnerPagePresenter,
                         NotificationManager notificationManager, ProjectTypeWizardRegistry projectTypeWizardRegistry,
-                        ParserResource parserResource, IconRegistry iconRegistry) {
+                        ParserResource parserResource, IconRegistry iconRegistry, FileTypeRegistry fileTypeRegistry,
+                        @Named("CPPFileType") FileType cppFile, @Named("HFileType") FileType hFile) {
         ProjectWizard wizard = new ProjectWizard(notificationManager);
         wizard.addPage(cppPagePresenterProvider);
         wizard.addPage(runnerPagePresenter);
 
         projectTypeWizardRegistry.addWizard("cpp", wizard);
+        
+        fileTypeRegistry.registerFileType(cppFile);
+        fileTypeRegistry.registerFileType(hFile);
 
         iconRegistry.registerIcon(new Icon("c++.samples.category.icon", parserResource.cppCategoryIcon()));
+        iconRegistry.registerIcon(new Icon("cpp/h.file.small.icon", parserResource.hFile()));
+        iconRegistry.registerIcon(new Icon("cpp/cpp.file.small.icon", parserResource.cppFile()));
     }
 }
