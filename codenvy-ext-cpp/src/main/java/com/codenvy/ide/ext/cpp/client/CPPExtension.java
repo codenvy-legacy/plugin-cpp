@@ -57,7 +57,7 @@ public class CPPExtension {
         fileTypeRegistry.registerFileType(cppFile);
         fileTypeRegistry.registerFileType(hFile);
 
-        iconRegistry.registerIcon(new Icon("c++.samples.category.icon", parserResource.cppCategoryIcon()));
+        iconRegistry.registerIcon(new Icon("C++.samples.category.icon", parserResource.cppCategoryIcon()));
         iconRegistry.registerIcon(new Icon("cpp/h.file.small.icon", parserResource.hFile()));
         iconRegistry.registerIcon(new Icon("cpp/cpp.file.small.icon", parserResource.cppFile()));
     }
