@@ -19,6 +19,7 @@ import com.codenvy.ide.api.notification.NotificationManager;
 import com.codenvy.ide.api.projecttype.wizard.ProjectTypeWizardRegistry;
 import com.codenvy.ide.api.projecttype.wizard.ProjectWizard;
 import com.codenvy.ide.ext.cpp.client.wizard.CPPPagePresenter;
+import com.codenvy.ide.ext.cpp.shared.ProjectAttributes;
 import com.codenvy.ide.extension.runner.client.wizard.SelectRunnerPagePresenter;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
@@ -26,6 +27,7 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import com.google.inject.name.Named;
+
 import org.vectomatic.dom.svg.ui.SVGResource;
 
 /** @author Vladyslav Zhukovskii */
@@ -53,11 +55,11 @@ public class CPPExtension {
         wizard.addPage(runnerPagePresenter);
 
         projectTypeWizardRegistry.addWizard("cpp", wizard);
-        
+
         fileTypeRegistry.registerFileType(cppFile);
         fileTypeRegistry.registerFileType(hFile);
 
-        iconRegistry.registerIcon(new Icon("C++.samples.category.icon", parserResource.cppCategoryIcon()));
+        iconRegistry.registerIcon(new Icon(ProjectAttributes.CPP_CATEGORY + ".samples.category.icon", parserResource.cppCategoryIcon()));
         iconRegistry.registerIcon(new Icon("cpp/h.file.small.icon", parserResource.hFile()));
         iconRegistry.registerIcon(new Icon("cpp/cpp.file.small.icon", parserResource.cppFile()));
     }
