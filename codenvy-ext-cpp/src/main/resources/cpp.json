@@ -5,7 +5,7 @@
         "description": "A simple C++ application.",
         "source": {
             "type": "git",
-            "location": "https://github.com/codenvy-templates/desktop-c-plus-plus-basic.git",
+            "location": "https://github.com/codenvy-templates/desktop-cpp-simple.git",
             "parameters": {
                 "branch": "3.1.0",
                 "keepVcs": "false"
