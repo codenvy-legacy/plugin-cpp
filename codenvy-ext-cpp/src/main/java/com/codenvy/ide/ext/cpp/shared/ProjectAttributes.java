@@ -14,5 +14,5 @@ package com.codenvy.ide.ext.cpp.shared;
 public interface ProjectAttributes {
     String CPP_ID             = "cpp";
     String CPP_NAME           = "C++ Project";
-    String CPP_CATEGORY       = "C++";
+    String CPP_CATEGORY       = "C/C++";
 }
