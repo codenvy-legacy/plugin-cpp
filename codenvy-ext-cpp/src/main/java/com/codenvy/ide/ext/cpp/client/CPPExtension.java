@@ -45,10 +45,15 @@ public class CPPExtension {
     }
 
     @Inject
-    public CPPExtension(Provider<CPPPagePresenter> cppPagePresenterProvider, Provider<SelectRunnerPagePresenter> runnerPagePresenter,
-                        NotificationManager notificationManager, ProjectTypeWizardRegistry projectTypeWizardRegistry,
-                        ParserResource parserResource, IconRegistry iconRegistry, FileTypeRegistry fileTypeRegistry,
-                        @Named("CPPFileType") FileType cppFile, @Named("HFileType") FileType hFile) {
+    public CPPExtension(Provider<CPPPagePresenter> cppPagePresenterProvider,
+                        Provider<SelectRunnerPagePresenter> runnerPagePresenter,
+                        NotificationManager notificationManager,
+                        ProjectTypeWizardRegistry projectTypeWizardRegistry,
+                        ParserResource parserResource,
+                        IconRegistry iconRegistry,
+                        FileTypeRegistry fileTypeRegistry,
+                        @Named("CPPFileType") FileType cppFile,
+                        @Named("HFileType") FileType hFile) {
         ProjectWizard wizard = new ProjectWizard(notificationManager);
         wizard.addPage(cppPagePresenterProvider);
         wizard.addPage(runnerPagePresenter);
