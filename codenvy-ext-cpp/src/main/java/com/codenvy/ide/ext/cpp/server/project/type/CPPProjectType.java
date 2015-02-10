@@ -8,18 +8,19 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.ide.ext.cpp.server.inject;
+package com.codenvy.ide.ext.cpp.server.project.type;
 
 import com.codenvy.api.project.server.type.ProjectType;
-import com.codenvy.ide.ext.cpp.server.project.type.CPPProjectType;
-import com.codenvy.inject.DynaModule;
-import com.google.inject.AbstractModule;
-import com.google.inject.multibindings.Multibinder;
+import com.codenvy.api.project.shared.Constants;
+import com.codenvy.ide.ext.cpp.shared.ProjectAttributes;
 
-@DynaModule
-public class CPPModule extends AbstractModule {
-    @Override
-    protected void configure() {
-        Multibinder.newSetBinder(binder(), ProjectType.class).addBinding().to(CPPProjectType.class);
+/**
+ * @author Vitaly Parfonov
+ */
+public class CPPProjectType extends ProjectType {
+
+    public CPPProjectType() {
+        super(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, true, false);
+        addConstantDefinition(Constants.LANGUAGE, "language", ProjectAttributes.PROGRAMMING_LANGUAGE);
     }
 }
