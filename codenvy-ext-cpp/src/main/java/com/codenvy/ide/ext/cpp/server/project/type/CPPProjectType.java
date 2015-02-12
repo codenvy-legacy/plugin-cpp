@@ -8,14 +8,19 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.ide.ext.cpp.client.wizard;
+package com.codenvy.ide.ext.cpp.server.project.type;
 
-import com.codenvy.ide.api.mvp.View;
-import com.google.inject.ImplementedBy;
+import com.codenvy.api.project.server.type.ProjectType;
+import com.codenvy.api.project.shared.Constants;
+import com.codenvy.ide.ext.cpp.shared.ProjectAttributes;
 
-/** @author Vladyslav Zhukovskii */
-@ImplementedBy(CPPPageViewImpl.class)
-public interface CPPPageView extends View<CPPPageView.ActionDelegate> {
-    public interface ActionDelegate {
+/**
+ * @author Vitaly Parfonov
+ */
+public class CPPProjectType extends ProjectType {
+
+    public CPPProjectType() {
+        super(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, true, false);
+        addConstantDefinition(Constants.LANGUAGE, "language", ProjectAttributes.PROGRAMMING_LANGUAGE);
     }
 }

@@ -15,15 +15,9 @@ import com.codenvy.ide.api.filetypes.FileType;
 import com.codenvy.ide.api.filetypes.FileTypeRegistry;
 import com.codenvy.ide.api.icon.Icon;
 import com.codenvy.ide.api.icon.IconRegistry;
-import com.codenvy.ide.api.notification.NotificationManager;
-import com.codenvy.ide.api.projecttype.wizard.ProjectTypeWizardRegistry;
-import com.codenvy.ide.api.projecttype.wizard.ProjectWizard;
-import com.codenvy.ide.ext.cpp.client.wizard.CPPPagePresenter;
 import com.codenvy.ide.ext.cpp.shared.ProjectAttributes;
-import com.codenvy.ide.ext.runner.client.wizard.SelectRunnerPagePresenter;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 
@@ -45,21 +39,8 @@ public class CPPExtension {
     }
 
     @Inject
-    public CPPExtension(Provider<CPPPagePresenter> cppPagePresenterProvider,
-                        Provider<SelectRunnerPagePresenter> runnerPagePresenter,
-                        NotificationManager notificationManager,
-                        ProjectTypeWizardRegistry projectTypeWizardRegistry,
-                        ParserResource parserResource,
-                        IconRegistry iconRegistry,
-                        FileTypeRegistry fileTypeRegistry,
-                        @Named("CPPFileType") FileType cppFile,
-                        @Named("HFileType") FileType hFile) {
-        ProjectWizard wizard = new ProjectWizard(notificationManager);
-        wizard.addPage(cppPagePresenterProvider);
-        wizard.addPage(runnerPagePresenter);
-
-        projectTypeWizardRegistry.addWizard("cpp", wizard);
-
+    public CPPExtension(ParserResource parserResource, IconRegistry iconRegistry, FileTypeRegistry fileTypeRegistry,
+                        @Named("CPPFileType") FileType cppFile, @Named("HFileType") FileType hFile) {
         fileTypeRegistry.registerFileType(cppFile);
         fileTypeRegistry.registerFileType(hFile);
 

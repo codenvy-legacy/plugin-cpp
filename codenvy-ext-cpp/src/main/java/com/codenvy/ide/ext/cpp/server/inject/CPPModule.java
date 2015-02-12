@@ -10,16 +10,16 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.cpp.server.inject;
 
-import com.codenvy.ide.ext.cpp.server.project.type.CPPProjectTypeDescriptionExtension;
-import com.codenvy.ide.ext.cpp.server.project.type.CPPProjectTypeExtension;
+import com.codenvy.api.project.server.type.ProjectType;
+import com.codenvy.ide.ext.cpp.server.project.type.CPPProjectType;
 import com.codenvy.inject.DynaModule;
 import com.google.inject.AbstractModule;
+import com.google.inject.multibindings.Multibinder;
 
 @DynaModule
 public class CPPModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(CPPProjectTypeExtension.class);
-        bind(CPPProjectTypeDescriptionExtension.class);
+        Multibinder.newSetBinder(binder(), ProjectType.class).addBinding().to(CPPProjectType.class);
     }
 }
