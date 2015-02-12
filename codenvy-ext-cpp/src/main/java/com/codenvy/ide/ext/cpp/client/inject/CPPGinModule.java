@@ -13,10 +13,11 @@ package com.codenvy.ide.ext.cpp.client.inject;
 import com.codenvy.ide.MimeType;
 import com.codenvy.ide.api.extension.ExtensionGinModule;
 import com.codenvy.ide.api.filetypes.FileType;
+import com.codenvy.ide.api.projecttype.wizard.ProjectWizardRegistrar;
 import com.codenvy.ide.ext.cpp.client.CPPExtension;
-import com.codenvy.ide.ext.cpp.client.wizard.CPPPageView;
-import com.codenvy.ide.ext.cpp.client.wizard.CPPPageViewImpl;
+import com.codenvy.ide.ext.cpp.client.wizard.CPPProjectWizardRegistrar;
 import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.inject.client.multibindings.GinMultibinder;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
@@ -27,7 +28,7 @@ public class CPPGinModule extends AbstractGinModule {
     /** {@inheritDoc} */
     @Override
     protected void configure() {
-        bind(CPPPageView.class).to(CPPPageViewImpl.class).in(Singleton.class);
+        GinMultibinder.newSetBinder(binder(), ProjectWizardRegistrar.class).addBinding().to(CPPProjectWizardRegistrar.class);
     }
 
     @Provides
