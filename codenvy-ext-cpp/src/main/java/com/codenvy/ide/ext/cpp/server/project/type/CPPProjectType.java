@@ -14,13 +14,19 @@ import com.codenvy.api.project.server.type.ProjectType;
 import com.codenvy.api.project.shared.Constants;
 import com.codenvy.ide.ext.cpp.shared.ProjectAttributes;
 
+import java.util.Arrays;
+
+import static com.codenvy.ide.api.projecttype.RunnerCategory.CPP;
+
 /**
  * @author Vitaly Parfonov
+ * @author Dmitry Shnurenko
  */
 public class CPPProjectType extends ProjectType {
 
     public CPPProjectType() {
         super(ProjectAttributes.CPP_ID, ProjectAttributes.CPP_NAME, true, false);
         addConstantDefinition(Constants.LANGUAGE, "language", ProjectAttributes.PROGRAMMING_LANGUAGE);
+        addRunnerCategories(Arrays.asList(CPP.toString()));
     }
 }
