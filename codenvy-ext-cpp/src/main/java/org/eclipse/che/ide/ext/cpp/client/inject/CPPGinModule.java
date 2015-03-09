@@ -8,14 +8,14 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.ide.ext.cpp.client.inject;
+package org.eclipse.che.ide.ext.cpp.client.inject;
 
-import com.codenvy.ide.MimeType;
-import com.codenvy.ide.api.extension.ExtensionGinModule;
-import com.codenvy.ide.api.filetypes.FileType;
-import com.codenvy.ide.api.projecttype.wizard.ProjectWizardRegistrar;
-import com.codenvy.ide.ext.cpp.client.CPPExtension;
-import com.codenvy.ide.ext.cpp.client.wizard.CPPProjectWizardRegistrar;
+import org.eclipse.che.ide.MimeType;
+import org.eclipse.che.ide.api.extension.ExtensionGinModule;
+import org.eclipse.che.ide.api.filetypes.FileType;
+import org.eclipse.che.ide.api.project.type.wizard.ProjectWizardRegistrar;
+import org.eclipse.che.ide.ext.cpp.client.CPPExtension;
+import org.eclipse.che.ide.ext.cpp.client.wizard.CPPProjectWizardRegistrar;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.inject.client.multibindings.GinMultibinder;
 import com.google.inject.Provides;

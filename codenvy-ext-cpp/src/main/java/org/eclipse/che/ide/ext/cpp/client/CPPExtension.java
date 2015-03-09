@@ -8,14 +8,14 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.ide.ext.cpp.client;
+package org.eclipse.che.ide.ext.cpp.client;
 
-import com.codenvy.ide.api.extension.Extension;
-import com.codenvy.ide.api.filetypes.FileType;
-import com.codenvy.ide.api.filetypes.FileTypeRegistry;
-import com.codenvy.ide.api.icon.Icon;
-import com.codenvy.ide.api.icon.IconRegistry;
-import com.codenvy.ide.ext.cpp.shared.ProjectAttributes;
+import org.eclipse.che.ide.api.extension.Extension;
+import org.eclipse.che.ide.api.filetypes.FileType;
+import org.eclipse.che.ide.api.filetypes.FileTypeRegistry;
+import org.eclipse.che.ide.api.icon.Icon;
+import org.eclipse.che.ide.api.icon.IconRegistry;
+import org.eclipse.che.ide.ext.cpp.shared.ProjectAttributes;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -28,13 +28,13 @@ import org.vectomatic.dom.svg.ui.SVGResource;
 @Extension(title = "C++", version = "3.0.0")
 public class CPPExtension {
     public interface ParserResource extends ClientBundle {
-        @Source("com/codenvy/ide/ext/cpp/client/image/cpp-category.svg")
+        @Source("org/eclipse/che/ide/ext/cpp/client/image/cpp-category.svg")
         SVGResource cppCategoryIcon();
 
-        @Source("com/codenvy/ide/ext/cpp/client/image/cpp.svg")
+        @Source("org/eclipse/che/ide/ext/cpp/client/image/cpp.svg")
         SVGResource cppFile();
 
-        @Source("com/codenvy/ide/ext/cpp/client/image/h.svg")
+        @Source("org/eclipse/che/ide/ext/cpp/client/image/h.svg")
         SVGResource hFile();
     }
 

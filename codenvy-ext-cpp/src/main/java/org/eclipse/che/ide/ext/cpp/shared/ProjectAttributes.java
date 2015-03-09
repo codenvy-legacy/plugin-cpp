@@ -8,7 +8,7 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.ide.ext.cpp.shared;
+package org.eclipse.che.ide.ext.cpp.shared;
 
 /** @author Vladyslav Zhukovskii */
 public interface ProjectAttributes {
